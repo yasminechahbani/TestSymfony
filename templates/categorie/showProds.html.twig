@@ -5,7 +5,7 @@
     <div class="container">
         <h1 style="text-align: center;">Prod de {{ categories.nom }}</h1>
 
-        {% if Prod is empty %}
+        {% if Produit is empty %}
             <p>Aucun Prod trouve.</p>
         {% else %}
             <table class="table">
@@ -24,7 +24,17 @@
                             <td>{{ Produit.description }}</td>
                             <td>{{ Produit.prix }}</td>
                             <td>
-                               {{ Produit.categorie }}
+                                <table>
+                                    <tr>
+                                        <th>nom</th>
+                                        <td>{{ Produit.categorie.nom }}</td>
+                                    </tr>
+
+                                </table>
+
+       <td><a href="{{ path('app_produit_edit', {id: Produit.id}) }}">Modifier</a></td>
+                           <td><a href="{{ path('app_produit_delete', {id: Produit.id}) }}">Supprimer</a></td>
+                           <td><a href="{{ path('app_produit_new') }}">Add</a></td>
                             </td>
                         </tr>
                     {% endfor %}
