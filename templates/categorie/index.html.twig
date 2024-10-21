@@ -1,0 +1,29 @@
+
+<h1>All Cat</h1>
+
+{% if categories is defined and categories is not empty %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th></th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for categorie in categories %}
+            <tr>
+                <td>{{ categorie.nom }}</td>
+            </tr>
+<td><a href="{{ path('app_categorie_prod', {id: categorie.id}) }}">categorie.nom</a></td>
+                <td><a href="{{ path('app_categorie_update', {id: categorie.id}) }}">Modifier</a></td>
+                <td><a href="{{ path('app_delete_categorie', {id: categorie.id}) }}">Supprimer</a></td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>No Categories found. </p>
+{% endif %}
+
