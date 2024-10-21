@@ -1,0 +1,36 @@
+
+<h1>All prods</h1>
+
+{% if prod is defined and prod is not empty %}
+    <table class="table table-striped">
+           <thead>
+               <tr>
+                   <th>Name</th>
+                   <th>Description</th>
+                   <th>Price</th>
+                   <th>Categorie</th>
+
+               </tr>
+           </thead>
+           <tbody>
+                       {% for produits in produits %}
+                       <tr>
+                           <td>{{ produits.nom }}</td>
+                           <td>{{produits.description }}</td>
+                           <td>{{ produits.prix }}</td>
+                           <td>{{ produits.categorie }}</td>
+
+
+
+                       </tr>
+                           <td><a href="{{ path('app_produit_edit', {id: produits.id}) }}">Modifier</a></td>
+                           <td><a href="{{ path('app_produit_delete', {id: produits.id}) }}">Supprimer</a></td>
+                           <td><a href="{{ path('app_produit_new') }}">Add</a></td>
+                       </tr>
+                       {% endfor %}
+                   </tbody>
+       </table>
+{% else %}
+    <p>No Prods found. </p>
+{% endif %}
+

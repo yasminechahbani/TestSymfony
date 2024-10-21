@@ -1,0 +1,35 @@
+
+
+
+{% block body %}
+    <div class="container">
+        <h1 style="text-align: center;">Prod de {{ categories.nom }}</h1>
+
+        {% if Prod is empty %}
+            <p>Aucun Prod trouve.</p>
+        {% else %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>nom</th>
+                        <th>description</th>
+                        <th>prix</th>
+                        <th>categorie</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for Produit in Produit %}
+                        <tr>
+                            <td>{{ Produit.nom }}</td>
+                            <td>{{ Produit.description }}</td>
+                            <td>{{ Produit.prix }}</td>
+                            <td>
+                               {{ Produit.categorie }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
+{% endblock %}
